@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<h3><a th:href="@{/home/}">Quay Lại Trang Chủ</a></h3>
+<h1>Chi Tiết Sản Phẩm</h1>
+<div>
+    <img width="100px" height="100px" th:src="@{'/image/' + ${image}}">
+    <center th:text="'giỏ hàng : ' + ${count}"></center>
+</div>
+<table border="1">
+        <td>
+            <img width="300" height="250" th:src="@{'/image/'+${product.image}}">
+            <center th:text="'Mã SP : '+ ${product.code}"></center>
+            <center style="color: red" th:text="'giá mới : ' + ${product.price}"></center>
+            <center>
+                <button>Mua ngay</button>
+                <a th:href="@{/session/__${product.id}__ }">giỏ hàng</a>
+            </center>
+        </td>
+        <td>
+        <p th:text="${product.name}"></p>
+        <hr>
+        <p th:text="${product.description}"></p>
+        <p th:text="${product.getItems()}"></p>
+        <p th:text="${product.getCompany()}"></p>
+        </td>
+</table>
+</body>
+</html>
