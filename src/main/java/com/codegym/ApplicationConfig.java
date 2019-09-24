@@ -77,7 +77,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         String fileUpload = env.getProperty("file_upload").toString();
 
         // Image resource.
-        registry.addResourceHandler("/image/**") //
+        registry.addResourceHandler("/img/**") //
                 .addResourceLocations("file:" + fileUpload);
     }
 
@@ -87,7 +87,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 
         //Set the maximum allowed size (in bytes) for each individual file.
-        resolver.setMaxUploadSizePerFile(10242880);//10MB
+        resolver.setMaxUploadSizePerFile(1024);//10MB
 
         //You may also set other available properties.
 
@@ -137,7 +137,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[]{"com.codegym.model"});
+        em.setPackagesToScan(new String[]{"com.codegym"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
