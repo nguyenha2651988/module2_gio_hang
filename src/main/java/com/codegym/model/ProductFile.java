@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class ProductFile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String code;
     private String name;
-    private Double price;
+    private Long price;
     private String description;
     private MultipartFile image;
     @ManyToOne
@@ -23,7 +23,7 @@ public class ProductFile {
     public ProductFile() {
     }
 
-    public ProductFile(String code, String name, Double price, String description, MultipartFile image, Company company, Items items) {
+    public ProductFile(String code, String name, Long price, String description, MultipartFile image, Company company, Items items) {
         this.code = code;
         this.name = name;
         this.price = price;
@@ -41,11 +41,11 @@ public class ProductFile {
         this.image = image;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,11 +65,11 @@ public class ProductFile {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

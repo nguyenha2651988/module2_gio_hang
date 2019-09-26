@@ -10,7 +10,7 @@ public class Products {
     private Long id;
     private String code;
     private String name;
-    private Double price;
+    private Long price;
     private String description;
     private String image;
     @ManyToOne
@@ -20,7 +20,7 @@ public class Products {
     @JoinColumn(name = "items_id")
     private Items items;
 
-    public Products(String code, String name, Double price, String description, String image, Company company, Items items) {
+    public Products(String code, String name, Long price, String description, String image, Company company, Items items) {
         this.code = code;
         this.name = name;
         this.price = price;
@@ -65,11 +65,11 @@ public class Products {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

@@ -10,7 +10,12 @@
     </style>
 </head>
 <body>
+<h3><a th:href="@{/create-from}">Thêm sản phẩm</a></h3>
+
 <h3>Danh Sách Sản Phẩm</h3>
+<th:block th:if="${message}">
+    <h3 th:text="${message}"></h3>
+</th:block>
 <div>
     <a th:href="@{/gio_hang}">
     <img width="100px" height="100px" th:src="@{'/image/' + ${image}}">
@@ -21,7 +26,7 @@
     <th:block th:each="product : ${products}">
         <td>
             <a th:href="@{/view/__${product.id}__}">
-                <img width="300px" height="300px" th:src="@{'/image/' + ${product.image}}">
+        <img width="300px" height="300px" th:src="@{'/image/' + ${product.image}}">
                 <center th:text="${product.name}"></center>
                 <center style="color: red" th:text="${product.price}"></center>
             </a>

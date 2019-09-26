@@ -7,7 +7,7 @@
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>exact</DefaultCasing>
     </root>
-    <schema id="2" parent="1" name="gio_hang">
+    <schema id="2" parent="1" name="gioHang">
       <Current>1</Current>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
@@ -1112,7 +1112,7 @@
     </view>
     <column id="295" parent="230" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1133,7 +1133,7 @@
     </column>
     <column id="299" parent="232" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1149,7 +1149,7 @@
     </key>
     <column id="302" parent="233" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1175,17 +1175,17 @@
     </column>
     <column id="307" parent="233" name="price">
       <Position>6</Position>
-      <DataType>double|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="308" parent="233" name="company_id">
       <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="309" parent="233" name="items_id">
       <Position>8</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="310" parent="233" name="FKem6qv22xjkx7t163l00dw2qv2">

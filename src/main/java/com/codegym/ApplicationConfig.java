@@ -1,8 +1,11 @@
 package com.codegym;
 
-
 import com.codegym.model.GioHang;
+import com.codegym.service.CompanyService;
+import com.codegym.service.ItemService;
 import com.codegym.service.ProductsService;
+import com.codegym.service.impl.CompanySeviceImpl;
+import com.codegym.service.impl.ItemSeviceImpl;
 import com.codegym.service.impl.ProductServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -39,7 +43,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
@@ -59,15 +62,20 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return new GioHang();
     }
 
+    @Bean
+    public CompanyService companyService(){
+        return new CompanySeviceImpl();
+    }
+
+    @Bean
+    public ItemService itemService(){
+        return new ItemSeviceImpl();
+    }
 
     @Bean
     public ProductsService productsService(){
         return new ProductServiceImpl();
     }
-//    @Bean
-//    public DepartmentService departmentService(){
-//        return new DepartmentServiceImpl();
-//    }
 
 
     // Cấu hình để sử dụng các file nguồn tĩnh (css, image, ..)
@@ -77,7 +85,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         String fileUpload = env.getProperty("file_upload").toString();
 
         // Image resource.
-        registry.addResourceHandler("/img/**") //
+        registry.addResourceHandler("/image/**") //
                 .addResourceLocations("file:" + fileUpload);
     }
 
@@ -87,7 +95,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 
         //Set the maximum allowed size (in bytes) for each individual file.
-        resolver.setMaxUploadSizePerFile(1024);//10MB
+        resolver.setMaxUploadSizePerFile(10242880);//10MB
 
         //You may also set other available properties.
 
@@ -137,7 +145,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[]{"com.codegym"});
+        em.setPackagesToScan(new String[]{"com.codegym.model"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -149,7 +157,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/gio_hang?useUnicode=yes&characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/gioHang?useUnicode=yes&characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
         return dataSource;
@@ -167,10 +175,4 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return properties;
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        StringToLocalDateConverter stringToLocalDateConverter = new
-//                StringToLocalDateConverter();
-//        registry.addConverter(stringToLocalDateConverter);
-//    }
 }

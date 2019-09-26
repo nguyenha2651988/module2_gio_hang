@@ -26,7 +26,7 @@ public class GioHang {
         this.thoiGianTao = thoiGianTao;
     }
 
-    public void setExpiryDate(int minutes){
+    public void setExpiryDate(int minutes) {
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MINUTE, minutes);
         this.thoiGianHetHan = now.getTime();
@@ -37,7 +37,6 @@ public class GioHang {
     }
 
     public void setCount(int count) {
-
         this.count = count;
     }
 
@@ -54,11 +53,12 @@ public class GioHang {
         return array;
     }
 
-    public void hetHan() {
-        this.setExpiryDate(1);
-        if (new Date().after(this.thoiGianHetHan)) {
-            count = 0;
-            array.clear();
-        }
+    public void setArray() {
+        this.array.clear();
+    }
+
+    public boolean hetHan() {
+        setExpiryDate(1);
+        return new Date().after(this.thoiGianHetHan);
     }
 }

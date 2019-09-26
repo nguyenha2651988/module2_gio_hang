@@ -13,7 +13,7 @@
         <introspection-scope>
           <node kind="schema">
             <name qname="@" />
-            <name qname="gio_hang" />
+            <name qname="gioHang" />
           </node>
         </introspection-scope>
       </schema-mapping>
